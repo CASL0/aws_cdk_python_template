@@ -1,0 +1,53 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the
+// README at: https://github.com/devcontainers/templates/tree/main/src/javascript-node
+{
+  "name": "AWS CDK Python",
+  "image": "mcr.microsoft.com/devcontainers/javascript-node:1-20-bullseye",
+  "features": {
+    "ghcr.io/devcontainers/features/aws-cli:1": {
+      "version": "latest"
+    },
+    "ghcr.io/devcontainers-contrib/features/aws-cdk:2": {
+      "version": "latest"
+    },
+    "ghcr.io/devcontainers/features/python:1": {
+      "version": "3.12"
+    }
+  },
+  "workspaceMount": "source=${localWorkspaceFolder},target=/opt/workspace,type=bind,consistency=delegated",
+  "workspaceFolder": "/opt/workspace",
+  "remoteEnv": {
+    "AWS_ACCESS_KEY_ID": "${localEnv:AWS_ACCESS_KEY_ID}",
+    "AWS_SECRET_ACCESS_KEY": "${localEnv:AWS_SECRET_ACCESS_KEY}",
+    "AWS_DEFAULT_REGION": "${localEnv:AWS_DEFAULT_REGION}"
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "streetsidesoftware.code-spell-checker",
+        "ms-python.python",
+        "ms-python.black-formatter",
+        "ms-python.pylint",
+        "esbenp.prettier-vscode",
+        "njpwerner.autodocstring",
+        "oderwat.indent-rainbow"
+      ],
+      "settings": {
+        "editor.tabSize": 2,
+        "editor.wordWrap": "on",
+        "editor.formatOnPaste": true,
+        "editor.formatOnSave": true,
+        "editor.formatOnType": true,
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
+        "files.eol": "\n",
+        "files.insertFinalNewline": true,
+        "files.trimFinalNewlines": true,
+        "files.trimTrailingWhitespace": true,
+        "[python]": {
+          "editor.tabSize": 4,
+          "editor.defaultFormatter": "ms-python.black-formatter"
+        }
+      }
+    }
+  }
+}
